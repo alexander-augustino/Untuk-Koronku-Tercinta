@@ -1,9 +1,11 @@
 // --- LOGIKA HALAMAN 1: SURAT GLASSMORPHISM ---
 function openLetter() {
     const letterBox = document.getElementById('letter-box');
-    letterBox.classList.add('open');
+    const revealBtn = document.getElementById('reveal-btn');
     
-    // Munculkan 3 foto pop-out bergantian setelah surat terbuka sempurna
+    letterBox.classList.add('open');
+    revealBtn.style.display = 'none'; // Sembunyikan tombol setelah diklik
+    
     setTimeout(() => {
         const popImages = document.querySelectorAll('.pop-img');
         popImages.forEach(img => {
@@ -19,7 +21,6 @@ function explodeLove() {
     const circlePhotos = document.getElementById('circle-photos');
     const container = document.querySelector('.love-container');
 
-    // Animasi ledakan hati kecil berhamburan ke luar
     for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -39,12 +40,10 @@ function explodeLove() {
         setTimeout(() => particle.remove(), 800);
     }
 
-    // Sembunyikan tombol hati utamanya
     loveBtn.style.transform = 'scale(0)';
     loveBtn.style.opacity = '0';
     setTimeout(() => loveBtn.style.display = 'none', 300);
 
-    // Aktifkan efek sisa pudar ledakan & keluarkan 5 foto melingkar
     setTimeout(() => {
         shadow.style.opacity = '1';
         circlePhotos.classList.add('show-photos');
@@ -59,12 +58,9 @@ function spinWheel() {
     hasSpun = true;
 
     const wheel = document.getElementById('wheel');
-    
-    // Kunci putaran di juring misterius utama (sec:0)
     const targetAngle = (5 * 360) + (360 - 25.7); 
     wheel.style.transform = `rotate(${targetAngle}deg)`;
 
-    // Alert popup setelah putaran roda berhenti total
     setTimeout(() => {
         alert("🎁 YEY KAMU DAPAT HADIAH MISTERIUS! 🎁\n\nHubungi Davin segera untuk mengklaim hadiah kamu sayang! WKWKWK 🥰");
     }, 4700);
