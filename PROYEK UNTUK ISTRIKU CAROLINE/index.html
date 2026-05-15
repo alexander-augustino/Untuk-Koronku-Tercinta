@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Buat Koron Sayang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="cute-nav">
+        <a href="#page1">✉️ Surat</a>
+        <a href="#page2">❤️ Kejutan</a>
+        <a href="#page3">🎁 Hadiah</a>
+    </nav>
+
+    <section id="page1" class="section-page">
+        <button id="reveal-btn" onclick="openLetter()">Klik untuk lihat pesan ✨</button>
+        <div id="letter-box" class="glass-card">
+            <img src="Koronku 2/pop 1.jpeg" class="pop-img pop-left" alt="pop 1">
+            <img src="Koronku 2/pop 2.jpeg" class="pop-img pop-center" alt="pop 2">
+            <img src="Koronku 2/pop 3.jpeg" class="pop-img pop-right" alt="pop 3">
+            
+            <h2 class="romantic-title">Hello Sayangku...</h2>
+            <p class="letter-text">
+                Koron sayangku cintaku, <strong>SELAMAT SUDAH MENUNTASKAN UTBK</strong>, apapun yang jadi hasilnya, aku tetap mencintaimu, aku tetap bangga sama kamu, dan <strong>KAMU TETAP AMAT SANGAT BERHARGA BUATKU</strong>, jadi jangan kecil hati ya sayangku!!! I LOVE YOU NO MATTER WHAT!
+            </p>
+        </div>
+    </section>
+
+    <section id="page2" class="section-page">
+        <div class="love-container">
+            <button id="love-btn" onclick="explodeLove()">TAP ME ❤️</button>
+            <div id="love-shadow"></div>
+            
+            <div id="circle-photos" class="photo-circle-wrap">
+                <img src="Koronku 3/photo 1.jpeg" class="heart-photo" style="--i:0;" alt="photo 1">
+                <img src="Koronku 3/photo 2.jpeg" class="heart-photo" style="--i:1;" alt="photo 2">
+                <img src="Koronku 3/photo 3.jpeg" class="heart-photo" style="--i:2;" alt="photo 3">
+                <img src="Koronku 3/photo 4.jpeg" class="heart-photo" style="--i:3;" alt="photo 4">
+                <img src="Koronku 3/photo 5.jpeg" class="heart-photo" style="--i:4;" alt="photo 5">
+            </div>
+        </div>
+    </section>
+
+    <section id="page3" class="section-page">
+        <h1 class="spin-title">SPIN ME BABY! 🍭</h1>
+        <div class="wheel-box">
+            <div class="wheel-pointer">👇</div>
+            <div id="wheel" class="wheel-canvas">
+                <div class="segment" style="--sec:0;"><span>?</span></div>
+                <div class="segment" style="--sec:1;"><span>?</span></div>
+                <div class="segment" style="--sec:2;"><span>?</span></div>
+                <div class="segment" style="--sec:3;"><span>?</span></div>
+                <div class="segment" style="--sec:4;"><span>?</span></div>
+                <div class="segment" style="--sec:5;"><span>?</span></div>
+                <div class="segment" style="--sec:6;"><span>?</span></div>
+            </div>
+            <button id="spin-btn" onclick="spinWheel()">SPIN! ☕</button>
+        </div>
+    </section>
+
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5, 0.15 C 0.35, -0.05, 0, 0, 0, 0.4 C 0, 0.7, 0.3, 0.85, 0.5, 1 C 0.7, 0.85, 1, 0.7, 1, 0.4 C 1, 0, 0.65, -0.05, 0.5, 0.15 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <script src="script.js"></script>
+</body>
+</html>
