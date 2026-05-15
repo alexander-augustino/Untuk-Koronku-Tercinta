@@ -41,7 +41,8 @@ function spinWheel() {
     if (hasSpun) return; 
     hasSpun = true;
     const wheel = document.getElementById('wheel');
-    const targetAngle = (5 * 360) + (360 - 25.7); 
+    // Target 25.7deg adalah tengah juring pink pertama
+    const targetAngle = (10 * 360) + (360 - 25.7); 
     wheel.style.transform = `rotate(${targetAngle}deg)`;
     setTimeout(() => {
         alert("🎁 YEY KAMU DAPAT HADIAH MISTERIUS! 🎁\n\nHubungi Davin segera untuk mengklaim hadiah kamu sayang!");
