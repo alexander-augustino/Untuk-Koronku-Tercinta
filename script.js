@@ -9,7 +9,7 @@ function openLetter() {
                 img.classList.add('show');
             }, index * 200);
         });
-    }, 700);
+    }, 500);
 }
 
 function explodeLove() {
@@ -18,15 +18,16 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
-    // Partikel menyebar
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.innerHTML = '❤️';
         const angle = Math.random() * Math.PI * 2;
-        const distance = 100 + Math.random() * 180;
+        const distance = 50 + Math.random() * 150;
         particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
         particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+        particle.style.left = '50%';
+        particle.style.top = '50%';
         container.appendChild(particle);
         setTimeout(() => particle.remove(), 1000);
     }
@@ -36,7 +37,6 @@ function explodeLove() {
     setTimeout(() => {
         loveBtn.style.display = 'none';
         midMsg.classList.add('show-msg');
-        // REVISI: Tambahkan class agar 5 foto meluncur dari tengah
         circlePhotos.classList.add('show-form');
     }, 400);
 }
