@@ -18,6 +18,7 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
+    // Partikel menyebar
     for (let i = 0; i < 40; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -35,6 +36,7 @@ function explodeLove() {
     setTimeout(() => {
         loveBtn.style.display = 'none';
         midMsg.classList.add('show-msg');
+        // REVISI: Tambahkan class agar 5 foto meluncur dari tengah
         circlePhotos.classList.add('show-form');
     }, 400);
 }
