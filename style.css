@@ -1,56 +1,33 @@
-/* --- CONFIG DASAR --- */
 html { scroll-behavior: smooth; }
 body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; background: #000; overflow-x: hidden; }
 
 .cute-nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); padding: 10px 25px; border-radius: 30px; display: flex; gap: 20px; z-index: 100; border: 1px solid rgba(255, 255, 255, 0.4); }
 .cute-nav a { color: #fff; text-decoration: none; font-weight: bold; }
 
-.section-page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; position: relative; padding: 40px 20px; }
-#page1 { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('Koronku/bg 1.jpeg'); }
-#page2 { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('Koronku/bg 2.jpeg'); }
-#page3 { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('Koronku/bg 3.jpeg'); }
+.section-page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; position: relative; }
+#page1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 1.jpeg'); }
+#page2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 2.jpeg'); }
+#page3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 3.jpeg'); }
 
-/* REVISI 1: FONT TOMBOL FREDOKA */
-#reveal-btn { 
-    background: #ff75a0; color: white; border: none; padding: 15px 35px; 
-    font-size: 1.2rem; font-family: 'Fredoka', sans-serif; /* Pastikan bukan Pacifico */
-    border-radius: 50px; cursor: pointer; transition: 0.3s; 
-    box-shadow: 0 5px 15px rgba(255,117,160,0.4); 
-}
-
-.glass-card { 
-    background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px; padding: 50px 40px; max-width: 600px; text-align: center;
-    display: none; opacity: 0; position: relative; transition: 0.8s ease-out;
-}
+/* PAGE 1: TOMBOL PACIFICO & POP SLIDE */
+#reveal-btn { background: #ff75a0; color: white; border: none; padding: 15px 35px; font-size: 1.5rem; font-family: 'Pacifico', cursive; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+.glass-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 25px; padding: 40px; max-width: 500px; text-align: center; display: none; opacity: 0; position: relative; z-index: 5; }
 .glass-card.open { display: block; opacity: 1; }
-.romantic-title { font-family: 'Pacifico', cursive; font-size: 2.5rem; margin-bottom: 20px; color: #ffcbdc; }
-.letter-text { font-size: 1.1rem; line-height: 1.6; color: #fff; }
 
-.pop-img { position: absolute; width: 120px; height: 120px; object-fit: cover; border: 5px solid #fff; border-radius: 20px; opacity: 0; transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10; }
-.pop-img.show { opacity: 1; }
-.pop-left { top: -70px; left: -60px; transform: rotate(-15deg) scale(0); }
-.pop-left.show { transform: rotate(-15deg) scale(1); }
-.pop-center { top: -110px; left: 50%; transform: translateX(-50%) scale(0); }
-.pop-center.show { transform: translateX(-50%) scale(1); }
-.pop-right { top: -70px; right: -60px; transform: rotate(15deg) scale(0); }
-.pop-right.show { transform: rotate(15deg) scale(1); }
+.pop-img { position: absolute; width: 100px; height: 100px; object-fit: cover; border: 3px solid #fff; border-radius: 10px; opacity: 0; transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.1); }
+.pop-img.show { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--rot)); }
+.pop-left { --tx: -260px; --ty: -180px; --rot: -10deg; }
+.pop-center { --tx: -50px; --ty: -210px; --rot: 0deg; }
+.pop-right { --tx: 160px; --ty: -180px; --rot: 10deg; }
 
-/* REVISI 2: POSISI TEKS TENGAH PAGE 2 */
-.love-container { position: relative; width: 100%; height: 600px; display: flex; justify-content: center; align-items: center; }
-.heart-shape-btn { width: 140px; height: 130px; background: #ff3366; border: none; color: white; font-weight: bold; cursor: pointer; clip-path: url(#heart-clip); z-index: 10; animation: pulse 1.5s infinite; }
-@keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
-
-.message-center { 
-    position: absolute; text-align: center; width: 100%; 
-    max-width: 400px; left: 50%; top: 50%; transform: translate(-50%, -50%); /* Kunci di tengah mati */
-    opacity: 0; transition: 1.2s; z-index: 5; pointer-events: none; 
-}
+/* PAGE 2: TEKS STABIL DI TENGAH */
+.love-container { position: relative; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.heart-shape-btn { width: 140px; height: 130px; background: #ff3366; border: none; color: white; font-weight: bold; clip-path: url(#heart-clip); z-index: 10; cursor: pointer; transition: 0.4s; }
+.message-center { position: absolute; text-align: center; width: 320px; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; transition: 1s; z-index: 5; height: 160px; display: flex; flex-direction: column; justify-content: center; }
 .message-center.show-msg { opacity: 1; }
 .msg-title { font-family: 'Pacifico', cursive; color: #ffcbdc; font-size: 2.2rem; margin: 0; }
-.msg-subtitle { font-weight: 600; text-shadow: 2px 2px 4px #000; margin: 10px 0; display: block; }
 
-.heart-photo { position: absolute; width: 180px; height: 180px; object-fit: cover; clip-path: url(#heart-clip); left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
+.heart-photo { position: absolute; width: 180px; height: 180px; object-fit: cover; clip-path: url(#heart-clip); left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; transition: 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
 .show-form .heart-photo { opacity: 1; }
 .show-form .pos-top-left { transform: translate(-280px, -200px) scale(1); }
 .show-form .pos-top-right { transform: translate(100px, -200px) scale(1); }
@@ -58,37 +35,12 @@ body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; b
 .show-form .pos-mid-right { transform: translate(170px, 20px) scale(1); }
 .show-form .pos-bottom { transform: translate(-90px, 220px) scale(1); }
 
-/* REVISI 3: SPIN WHEEL TIDAK BENGKOK */
-.spin-title { font-family: 'Pacifico', cursive; font-size: 3rem; margin-bottom: 30px; }
+/* PAGE 3: ANTI-PENYON & SPIN TERUS */
 .wheel-box { position: relative; width: 350px; height: 350px; display: flex; justify-content: center; align-items: center; }
-.wheel-pointer { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-size: 2.5rem; z-index: 30; }
-
-.wheel-canvas { 
-    width: 100%; height: 100%; border-radius: 50%; border: 8px solid #fff; 
-    position: relative; overflow: hidden; /* Pastikan overflow hidden */
-    background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); 
-    transition: transform 4.5s cubic-bezier(0.15, 0, 0.15, 1); 
-    transform-origin: center center; /* REVISI: Titik pusat rotasi absolut */
-    display: block;
-}
-
+.wheel-canvas { width: 350px; height: 350px; border-radius: 50%; border: 6px solid #fff; position: relative; overflow: hidden; box-sizing: border-box; background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); transform-origin: center center; }
+.wheel-pointer { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-size: 2.5rem; z-index: 20; }
 .segment { position: absolute; width: 50%; height: 50%; top: 0; left: 50%; transform-origin: 0% 100%; transform: rotate(calc(var(--sec) * 51.43deg)); }
-.segment span { position: absolute; bottom: 40px; left: 10px; font-size: 1.5rem; font-weight: bold; }
+#spin-btn { position: absolute; width: 75px; height: 75px; border-radius: 50%; border: none; background: #fff; color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 30; }
 
-#spin-btn { 
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    width: 80px; height: 80px; border-radius: 50%; border: none; 
-    background: #fff; color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 40; 
-}
-
-/* Particles */
-.particle { position: absolute; left: 50%; top: 50%; font-size: 20px; pointer-events: none; animation: explode 1s forwards; }
+.particle { position: absolute; left: 50%; top: 50%; animation: explode 1s forwards; }
 @keyframes explode { 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
-
-/* RESPONSIVE FIXES */
-@media (max-width: 600px) {
-    .show-form .pos-top-left { transform: translate(-140px, -180px) scale(0.8); }
-    .show-form .pos-top-right { transform: translate(15px, -180px) scale(0.8); }
-    .show-form .pos-bottom { transform: translate(-65px, 150px) scale(0.8); }
-    .message-center { width: 90%; }
-}
