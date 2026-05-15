@@ -1,131 +1,78 @@
-/* --- 1. CONFIG UTAMA --- */
+/* --- CONFIG DASAR --- */
 html { scroll-behavior: smooth; }
-body {
-    margin: 0; padding: 0;
-    font-family: 'Fredoka', sans-serif;
-    color: #fff; overflow-x: hidden;
-    background-color: #000;
-}
-::-webkit-scrollbar { width: 14px; }
-::-webkit-scrollbar-track { background: rgba(255, 240, 245, 0.3); }
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #4da6ff, #ff75a0, #ff3333);
-    border-radius: 7px; border: 2px solid rgba(255, 255, 255, 0.5);
-}
+body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; background: #000; overflow-x: hidden; }
 
-/* --- 2. NAVIGASI --- */
-.cute-nav {
-    position: fixed; top: 20px; left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(8px);
-    padding: 10px 25px; border-radius: 30px;
-    display: flex; gap: 20px; z-index: 100;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-.cute-nav a { color: #fff; text-decoration: none; font-weight: bold; }
+/* NAV */
+.cute-nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 10px 20px; border-radius: 30px; display: flex; gap: 15px; z-index: 100; border: 1px solid rgba(255,255,255,0.3); }
+.cute-nav a { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
 
-/* --- 3. SECTION SETUP --- */
-.section-page {
-    position: relative; width: 100%; min-height: 150vh; 
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    padding: 120px 20px; box-sizing: border-box;
-    background-size: cover; background-position: center;
-}
+/* SECTIONS */
+.section-page { position: relative; width: 100%; min-height: 120vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; }
 #page1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 1.jpeg'); }
 #page2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 2.jpeg'); }
 #page3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 3.jpeg'); }
 
-/* --- 4. HALAMAN 1: SURAT --- */
-#reveal-btn {
-    background: #ff75a0; color: white; border: none;
-    padding: 18px 40px; font-size: 1.4rem; border-radius: 50px;
-    cursor: pointer; z-index: 5;
-}
-.glass-card {
-    background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.25); border-radius: 30px;
-    padding: 50px 40px; max-width: 650px; text-align: center;
-    display: none; opacity: 0; position: relative;
-    transform: translateY(30px); transition: all 0.8s ease;
-}
-.glass-card.open { display: block; opacity: 1; transform: translateY(0); }
-.romantic-title { font-family: 'Pacifico', cursive; font-size: 2.8rem; }
-.pop-img {
-    position: absolute; width: 120px; height: 120px; object-fit: cover;
-    border: 5px solid white; border-radius: 20px; opacity: 0; transition: all 0.7s;
-}
+/* PAGE 1: SURAT */
+.glass-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 40px; max-width: 500px; text-align: center; display: none; opacity: 0; position: relative; transition: 0.8s; }
+.glass-card.open { display: block; opacity: 1; }
+.romantic-title { font-family: 'Pacifico', cursive; font-size: 2rem; }
+.pop-img { position: absolute; width: 100px; height: 100px; object-fit: cover; border: 4px solid #fff; border-radius: 15px; opacity: 0; transition: 0.6s; }
 .pop-img.show { opacity: 1; }
-.pop-left { top: -80px; left: -60px; transform: rotate(-15deg); }
-.pop-center { top: -110px; left: 50%; transform: translateX(-50%); }
-.pop-right { top: -80px; right: -60px; transform: rotate(15deg); }
+.pop-left { top: -50px; left: -40px; transform: rotate(-15deg); }
+.pop-center { top: -80px; left: 50%; transform: translateX(-50%); }
+.pop-right { top: -50px; right: -40px; transform: rotate(15deg); }
 
-/* --- 5. HALAMAN 2: KEJUTAN (REVISED) --- */
-.love-container {
-    position: relative; width: 100%; height: 650px;
-    display: flex; justify-content: center; align-items: center;
+/* PAGE 2: LEDAKAN REVISI */
+.love-container { position: relative; width: 100%; height: 700px; display: flex; justify-content: center; align-items: center; }
+
+/* Tombol Bentuk Love */
+.heart-shape-btn {
+    width: 140px; height: 130px; background: #ff3366; border: none; color: white;
+    font-weight: bold; cursor: pointer; clip-path: url(#heart-clip);
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.4s; animation: pulse 1.5s infinite; z-index: 10;
 }
-#love-btn {
-    background: #ff3366; width: 150px; height: 150px; border-radius: 50%;
-    border: none; color: white; font-weight: bold; cursor: pointer;
-    animation: pulse 1.5s infinite; z-index: 5;
-}
-@keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
+@keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.15);} 100% {transform: scale(1);} }
 
-#love-shadow {
-    position: absolute; width: 250px; height: 250px;
-    background: radial-gradient(circle, rgba(255, 51, 102, 0.6) 0%, transparent 70%);
-    filter: blur(15px); opacity: 0; transition: opacity 1.5s;
-}
+/* Pesan Tengah */
+.message-center { position: absolute; text-align: center; width: 320px; opacity: 0; transition: 1s; z-index: 5; pointer-events: none; }
+.message-center.show-msg { opacity: 1; transform: scale(1.1); }
+.msg-title { font-family: 'Pacifico', cursive; color: #ffcbdc; margin: 0; }
+.msg-subtitle { font-size: 1rem; text-shadow: 2px 2px 5px #000; margin: 10px 0; font-weight: 600; }
 
-.message-center {
-    position: absolute; text-align: center; width: 300px;
-    z-index: 8; opacity: 0; transform: scale(0.5);
-    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.message-center.show-msg { opacity: 1; transform: scale(1); }
-.msg-title { font-family: 'Pacifico', cursive; font-size: 2.2rem; color: #ffcbdc; }
-.msg-subtitle { font-weight: 600; text-shadow: 1px 1px 4px #000; margin: 10px 0; }
-
-.particle { position: absolute; font-size: 24px; animation: explode 0.9s forwards; }
-@keyframes explode { 0% {opacity: 1;} 100% {transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0;} }
-
-.photo-circle-wrap { position: absolute; width: 0; height: 0; }
+/* Foto Formasi Hati (2-2-1) */
+.photo-form-wrap { position: absolute; width: 100%; height: 100%; pointer-events: none; }
 .heart-photo {
-    position: absolute; width: 160px; height: 160px; /* Ukuran lebih besar */
+    position: absolute; width: 180px; height: 180px; /* Diperbesar */
     object-fit: cover; clip-path: url(#heart-clip);
-    left: -80px; top: -80px; opacity: 0;
-    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.2);
-}
-.photo-circle-wrap.show-photos .heart-photo {
-    opacity: 1;
-    /* translate(260px) sebaran lebih luas & rotasi balik agar foto TEGAK */
-    transform: rotate(calc(var(--i) * 72deg)) translate(260px) rotate(calc(var(--i) * -72deg)) scale(1);
+    left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0);
+    opacity: 0; transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
 
-/* --- 6. HALAMAN 3: WHEEL --- */
-.spin-title { font-family: 'Pacifico', cursive; font-size: 3rem; }
-.wheel-box { position: relative; width: 350px; height: 350px; }
-.wheel-canvas {
-    width: 100%; height: 100%; border-radius: 50%; border: 8px solid #fff;
-    position: relative; overflow: hidden;
-    background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg);
-    transition: transform 5s cubic-bezier(0.15, 0, 0.15, 1);
-}
-.segment {
-    position: absolute; width: 50%; height: 50%; top: 0; left: 50%;
-    transform-origin: 0% 100%; transform: rotate(calc(var(--sec) * 51.43deg));
-}
-#spin-btn {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 85px; height: 85px; border-radius: 50%; border: none;
-    color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 20;
-}
+/* Koordinat Formasi Hati agar terpencar luas (Path-trail) */
+.show-form .heart-photo { opacity: 1; transform: scale(1); }
+.show-form .pos-top-left { transform: translate(-280px, -220px) scale(1); }
+.show-form .pos-top-right { transform: translate(100px, -220px) scale(1); }
+.show-form .pos-mid-left { transform: translate(-350px, 0px) scale(1); }
+.show-form .pos-mid-right { transform: translate(170px, 0px) scale(1); }
+.show-form .pos-bottom { transform: translate(-90px, 200px) scale(1); }
 
-/* --- 7. MOBILE --- */
+.particle { position: absolute; left: 50%; top: 50%; animation: explode 1s forwards; }
+@keyframes explode { 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
+
+/* PAGE 3: WHEEL */
+.wheel-box { position: relative; width: 300px; height: 300px; }
+.wheel-canvas { width: 100%; height: 100%; border-radius: 50%; border: 5px solid #fff; position: relative; overflow: hidden; background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); transition: 4.5s cubic-bezier(0.15, 0, 0.15, 1); }
+.segment { position: absolute; width: 50%; height: 50%; top: 0; left: 50%; transform-origin: 0% 100%; transform: rotate(calc(var(--sec) * 51.43deg)); }
+#spin-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; border-radius: 50%; border: none; color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 20; }
+
+/* Responsive Mobile */
 @media (max-width: 600px) {
-    .heart-photo { width: 120px; height: 120px; left: -60px; top: -60px; }
-    .photo-circle-wrap.show-photos .heart-photo { transform: rotate(calc(var(--i) * 72deg)) translate(170px) rotate(calc(var(--i) * -72deg)) scale(1); }
-    .msg-title { font-size: 1.6rem; }
+    .heart-photo { width: 130px; height: 130px; }
+    .show-form .pos-top-left { transform: translate(-140px, -180px) scale(1); }
+    .show-form .pos-top-right { transform: translate(10px, -180px) scale(1); }
+    .show-form .pos-mid-left { transform: translate(-170px, -30px) scale(1); }
+    .show-form .pos-mid-right { transform: translate(40px, -30px) scale(1); }
+    .show-form .pos-bottom { transform: translate(-65px, 120px) scale(1); }
+    .message-center { width: 250px; }
 }
