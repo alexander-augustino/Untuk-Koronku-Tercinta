@@ -18,12 +18,13 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
-    for (let i = 0; i < 35; i++) {
+    // Tambah jumlah partikel agar lebih meriah
+    for (let i = 0; i < 45; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.innerHTML = '❤️';
         const angle = Math.random() * Math.PI * 2;
-        const distance = 100 + Math.random() * 160;
+        const distance = 120 + Math.random() * 200;
         particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
         particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
         container.appendChild(particle);
@@ -42,7 +43,7 @@ function explodeLove() {
 let currentRotation = 0;
 function spinWheel() {
     const wheel = document.getElementById('wheel');
-    const randomSpin = Math.floor(Math.random() * 360) + 1800; // Minimal 5 putaran
+    const randomSpin = Math.floor(Math.random() * 360) + 1800; 
     currentRotation += randomSpin;
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 }
