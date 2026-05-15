@@ -14,28 +14,24 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
-    // Partikel menyebar
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.innerHTML = '❤️';
         const angle = Math.random() * Math.PI * 2;
-        const distance = 150 + Math.random() * 200; 
+        const distance = 100 + Math.random() * 150;
         particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
         particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
         container.appendChild(particle);
         setTimeout(() => particle.remove(), 1000);
     }
 
-    // Tombol pudar
-    loveBtn.style.transform = 'scale(0) rotate(20deg)';
     loveBtn.style.opacity = '0';
+    loveBtn.style.transform = 'scale(0)';
     
     setTimeout(() => {
         loveBtn.style.display = 'none';
-        // Teks muncul tepat di posisi tombol tadi
         midMsg.classList.add('show-msg');
-        // Foto terpencar membentuk pola hati
         circlePhotos.classList.add('show-form');
     }, 400);
 }
