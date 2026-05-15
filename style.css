@@ -1,70 +1,72 @@
-/* --- CONFIG UTAMA --- */
+/* --- CONFIG DASAR --- */
 html { scroll-behavior: smooth; }
 body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; background: #000; overflow-x: hidden; }
 
-/* Navigasi Girly (RESTORED) */
+/* NAVIGASI */
 .cute-nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); padding: 10px 25px; border-radius: 30px; display: flex; gap: 20px; z-index: 100; border: 1px solid rgba(255, 255, 255, 0.4); }
-.cute-nav a { color: #fff; text-decoration: none; font-weight: bold; transition: 0.2s; }
+.cute-nav a { color: #fff; text-decoration: none; font-weight: bold; }
 
-/* Sections */
-.section-page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; position: relative; }
+/* SECTIONS */
+.section-page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; position: relative; padding: 40px 20px; }
 #page1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 1.jpeg'); }
 #page2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 2.jpeg'); }
 #page3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 3.jpeg'); }
 
-/* PAGE 1: SURAT (FIXED) */
-#reveal-btn { background: #ff75a0; color: white; border: none; padding: 15px 35px; font-size: 1.3rem; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+/* PAGE 1: SURAT (FIXED BOX & GLASS) */
+#reveal-btn { background: #ff75a0; color: white; border: none; padding: 15px 35px; font-size: 1.3rem; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255,117,160,0.4); }
 .glass-card { 
     background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px; padding: 40px; max-width: 600px; text-align: center;
-    display: none; opacity: 0; position: relative; transition: 0.8s;
+    border-radius: 25px; padding: 50px 40px; max-width: 600px; text-align: center;
+    display: none; opacity: 0; position: relative; transition: 0.8s ease-out;
 }
 .glass-card.open { display: block; opacity: 1; }
-.pop-img { position: absolute; width: 110px; height: 110px; object-fit: cover; border: 4px solid #fff; border-radius: 15px; opacity: 0; transition: 0.6s; z-index: 10; }
+.romantic-title { font-family: 'Pacifico', cursive; font-size: 2.5rem; margin-bottom: 20px; color: #ffcbdc; }
+.letter-text { font-size: 1.1rem; line-height: 1.6; color: #fff; }
+.pop-img { position: absolute; width: 120px; height: 120px; object-fit: cover; border: 5px solid #fff; border-radius: 20px; opacity: 0; transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 .pop-img.show { opacity: 1; }
-.pop-left { top: -60px; left: -50px; transform: rotate(-15deg); }
-.pop-center { top: -90px; left: 50%; transform: translateX(-50%); }
-.pop-right { top: -60px; right: -50px; transform: rotate(15deg); }
+.pop-left { top: -70px; left: -60px; transform: rotate(-15deg); }
+.pop-center { top: -110px; left: 50%; transform: translateX(-50%); }
+.pop-right { top: -70px; right: -60px; transform: rotate(15deg); }
 
-/* PAGE 2: LEDAKAN & FORMASI HATI */
+/* PAGE 2: LEDAKAN HATI (UNTOUCHED) */
 .love-container { position: relative; width: 100%; height: 600px; display: flex; justify-content: center; align-items: center; }
 .heart-shape-btn { width: 140px; height: 130px; background: #ff3366; border: none; color: white; font-weight: bold; cursor: pointer; clip-path: url(#heart-clip); z-index: 10; animation: pulse 1.5s infinite; transition: 0.4s; }
 @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
-
-.message-center { position: absolute; text-align: center; width: 320px; opacity: 0; transition: 1s; z-index: 5; pointer-events: none; }
+.message-center { position: absolute; text-align: center; width: 320px; opacity: 0; transition: 1.2s; z-index: 5; pointer-events: none; }
 .message-center.show-msg { opacity: 1; }
-.msg-title { font-family: 'Pacifico', cursive; color: #ffcbdc; font-size: 2.2rem; }
-
-.heart-photo {
-    position: absolute; width: 180px; height: 180px; object-fit: cover; clip-path: url(#heart-clip);
-    left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0;
-    transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-}
+.msg-title { font-family: 'Pacifico', cursive; color: #ffcbdc; font-size: 2.2rem; margin: 0; }
+.msg-subtitle { font-weight: 600; text-shadow: 2px 2px 4px #000; margin: 10px 0; }
+.heart-photo { position: absolute; width: 180px; height: 180px; object-fit: cover; clip-path: url(#heart-clip); left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
 .show-form .heart-photo { opacity: 1; }
-/* Formasi 2-2-1 Membentuk Hati Luas */
 .show-form .pos-top-left { transform: translate(-280px, -200px) scale(1); }
 .show-form .pos-top-right { transform: translate(100px, -200px) scale(1); }
 .show-form .pos-mid-left { transform: translate(-350px, 20px) scale(1); }
 .show-form .pos-mid-right { transform: translate(170px, 20px) scale(1); }
 .show-form .pos-bottom { transform: translate(-90px, 220px) scale(1); }
 
-/* PAGE 3: WHEEL (RESTORED) */
-.wheel-box { position: relative; width: 320px; height: 320px; }
-.wheel-canvas { 
-    width: 100%; height: 100%; border-radius: 50%; border: 5px solid #fff; position: relative; overflow: hidden;
-    background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg);
-    transition: transform 4.5s cubic-bezier(0.15, 0, 0.15, 1);
-}
+/* PAGE 3: SPIN WHEEL (FIXED ALIGNMENT) */
+.spin-title { font-family: 'Pacifico', cursive; font-size: 3rem; margin-bottom: 30px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+.wheel-box { position: relative; width: 350px; height: 350px; display: flex; justify-content: center; align-items: center; }
+.wheel-pointer { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-size: 2.5rem; z-index: 10; }
+.wheel-canvas { width: 100%; height: 100%; border-radius: 50%; border: 8px solid #fff; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); transition: transform 4.5s cubic-bezier(0.15, 0, 0.15, 1); }
 .segment { position: absolute; width: 50%; height: 50%; top: 0; left: 50%; transform-origin: 0% 100%; transform: rotate(calc(var(--sec) * 51.43deg)); }
+.segment span { position: absolute; bottom: 40px; left: 10px; font-size: 1.5rem; font-weight: bold; }
+#spin-btn { position: absolute; width: 80px; height: 80px; border-radius: 50%; border: none; background: #fff; color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 20; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
 /* Particles */
-.particle { position: absolute; left: 50%; top: 50%; animation: explode 1s forwards; }
+.particle { position: absolute; left: 50%; top: 50%; font-size: 20px; pointer-events: none; animation: explode 1s forwards; }
 @keyframes explode { 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
 
-/* Mobile Adjustment */
+/* RESPONSIVE */
 @media (max-width: 600px) {
-    .heart-photo { width: 120px; height: 120px; }
-    .show-form .pos-top-left { transform: translate(-130px, -150px) scale(1); }
-    .show-form .pos-top-right { transform: translate(10px, -150px) scale(1); }
-    .show-form .pos-bottom { transform: translate(-60px, 120px) scale(1); }
+    .glass-card { padding: 30px 20px; margin: 0 10px; }
+    .romantic-title { font-size: 1.8rem; }
+    .pop-img { width: 90px; height: 90px; }
+    .pop-left { left: -20px; top: -40px; }
+    .pop-right { right: -20px; top: -40px; }
+    .wheel-box { width: 300px; height: 300px; }
+    .heart-photo { width: 130px; height: 130px; }
+    .show-form .pos-top-left { transform: translate(-140px, -160px) scale(1); }
+    .show-form .pos-top-right { transform: translate(15px, -160px) scale(1); }
+    .show-form .pos-bottom { transform: translate(-65px, 120px) scale(1); }
 }
