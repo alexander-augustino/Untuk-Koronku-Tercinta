@@ -14,12 +14,12 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 40; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.innerHTML = '❤️';
         const angle = Math.random() * Math.PI * 2;
-        const distance = 100 + Math.random() * 150;
+        const distance = 120 + Math.random() * 180;
         particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
         particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
         container.appendChild(particle);
