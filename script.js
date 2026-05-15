@@ -4,7 +4,11 @@ function openLetter() {
     letterBox.classList.add('open');
     revealBtn.style.display = 'none'; 
     setTimeout(() => {
-        document.querySelectorAll('.pop-img').forEach(img => img.classList.add('show'));
+        document.querySelectorAll('.pop-img').forEach((img, index) => {
+            setTimeout(() => {
+                img.classList.add('show');
+            }, index * 200);
+        });
     }, 700);
 }
 
@@ -14,12 +18,12 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 35; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.innerHTML = '❤️';
         const angle = Math.random() * Math.PI * 2;
-        const distance = 120 + Math.random() * 180;
+        const distance = 100 + Math.random() * 160;
         particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
         particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
         container.appendChild(particle);
@@ -28,7 +32,6 @@ function explodeLove() {
 
     loveBtn.style.opacity = '0';
     loveBtn.style.transform = 'scale(0)';
-    
     setTimeout(() => {
         loveBtn.style.display = 'none';
         midMsg.classList.add('show-msg');
@@ -36,15 +39,10 @@ function explodeLove() {
     }, 400);
 }
 
-let hasSpun = false;
+let currentRotation = 0;
 function spinWheel() {
-    if (hasSpun) return; 
-    hasSpun = true;
     const wheel = document.getElementById('wheel');
-    // Target 25.7deg adalah tengah juring pink pertama
-    const targetAngle = (10 * 360) + (360 - 25.7); 
-    wheel.style.transform = `rotate(${targetAngle}deg)`;
-    setTimeout(() => {
-        alert("🎁 YEY KAMU DAPAT HADIAH MISTERIUS! 🎁\n\nHubungi Davin segera untuk mengklaim hadiah kamu sayang!");
-    }, 4700);
+    const randomSpin = Math.floor(Math.random() * 360) + 1800; // Minimal 5 putaran
+    currentRotation += randomSpin;
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
 }
