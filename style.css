@@ -1,4 +1,4 @@
-/* --- CONFIG UTAMA & SCROLLBAR GRADASI --- */
+/* --- 1. CONFIG UTAMA & SCROLLBAR --- */
 html {
     scroll-behavior: smooth;
 }
@@ -9,6 +9,7 @@ body {
     font-family: 'Fredoka', sans-serif;
     color: #fff;
     overflow-x: hidden;
+    background-color: #000; /* Dasar hitam agar transisi antar section rapi */
 }
 
 /* Pembatas scrollbar gradasi kanan */
@@ -24,7 +25,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-/* Navigasi Girly */
+/* --- 2. NAVIGASI --- */
 .cute-nav {
     position: fixed;
     top: 20px;
@@ -32,6 +33,7 @@ body {
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 10px 25px;
     border-radius: 30px;
     display: flex;
@@ -39,174 +41,199 @@ body {
     z-index: 100;
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
 .cute-nav a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
+    transition: transform 0.2s, color 0.2s;
 }
+
 .cute-nav a:hover {
     transform: scale(1.1);
     color: #ffcbdc;
 }
 
-/* Pengaturan Section Umum */
+/* --- 3. PENGATURAN SECTION (DIPERPANJANG) --- */
 .section-page {
-    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    /* Menggunakan 150vh agar sesuai dengan background kolase yang tinggi */
+    min-height: 150vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     box-sizing: border-box;
-    padding: 60px 20px;
+    padding: 120px 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
-/* --- SETTING BACKGROUND PER HALAMAN (Folder: Koronku) --- */
-/* Menggunakan linear-gradient overlay hitam transparan (rgba 0.45) agar foto tidak kematangan/terlalu terang */
-/* SUDAH DIUPDATE KE .jpeg */
+/* Transisi halus antar background */
+.section-page::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+    pointer-events: none;
+}
+
+/* --- 4. BACKGROUND PER HALAMAN --- */
 #page1 {
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('Koronku/bg 1.jpeg') no-repeat center center/cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Koronku/bg 1.jpeg');
 }
+
 #page2 {
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('Koronku/bg 2.jpeg') no-repeat center center/cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Koronku/bg 2.jpeg');
 }
+
 #page3 {
-    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('Koronku/bg 3.jpeg') no-repeat center center/cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Koronku/bg 3.jpeg');
 }
 
-
-/* --- HALAMAN 1: SURAT GLASSMORPHISM --- */
+/* --- 5. HALAMAN 1: SURAT --- */
 #reveal-btn {
     background: #ff75a0;
     color: white;
     border: none;
-    padding: 15px 35px;
-    font-size: 1.3rem;
+    padding: 18px 40px;
+    font-size: 1.4rem;
     font-family: 'Fredoka', sans-serif;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 8px 15px rgba(255, 117, 160, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(255, 117, 160, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
 }
+
 #reveal-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateY(-5px);
     background: #ff5287;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px;
-    padding: 40px;
-    max-width: 600px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 650px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     position: relative;
     display: none;
     opacity: 0;
-    transform: scaleY(0);
-    transform-origin: center;
-    transition: opacity 0.6s, transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transform: scale(0.8) translateY(30px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
+
 .glass-card.open {
     display: block;
     opacity: 1;
-    transform: scaleY(1);
+    transform: scale(1) translateY(0);
 }
 
 .romantic-title {
     font-family: 'Pacifico', cursive;
     color: #fff;
-    font-size: 2.5rem;
-    margin-top: 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-}
-.letter-text {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
 }
 
-/* Foto Pop Out Animasi */
+.letter-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Foto Pop Out */
 .pop-img {
     position: absolute;
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border: 4px solid white;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border: 5px solid white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     opacity: 0;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+    transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.3);
     z-index: 10;
 }
+
 .pop-img.show {
     opacity: 1;
 }
-.pop-left { top: -60px; left: -50px; transform: rotate(-15deg) scale(0); }
+
+.pop-left { top: -80px; left: -60px; transform: rotate(-15deg) scale(0); }
 .pop-left.show { transform: rotate(-15deg) scale(1); }
 
-.pop-center { top: -90px; left: 50%; transform: translateX(-50%) scale(0); }
+.pop-center { top: -110px; left: 50%; transform: translateX(-50%) scale(0); }
 .pop-center.show { transform: translateX(-50%) scale(1); }
 
-.pop-right { top: -60px; right: -50px; transform: rotate(15deg) scale(0); }
+.pop-right { top: -80px; right: -60px; transform: rotate(15deg) scale(0); }
 .pop-right.show { transform: rotate(15deg) scale(1); }
 
-
-/* --- HALAMAN 2: LEDAKAN & 5 FOTO HATI --- */
+/* --- 6. HALAMAN 2: KEJUTAN --- */
 .love-container {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 #love-btn {
     background: #ff3366;
     color: white;
     border: none;
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 25px rgba(255, 51, 102, 0.7);
+    box-shadow: 0 0 30px rgba(255, 51, 102, 0.6);
     animation: pulse 1.5s infinite;
     z-index: 5;
-    transition: all 0.3s;
+    transition: all 0.4s;
 }
+
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(255, 51, 102, 0.9); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 51, 102, 0.5); }
+    50% { transform: scale(1.1); box-shadow: 0 0 45px rgba(255, 51, 102, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 51, 102, 0.5); }
 }
 
 #love-shadow {
     position: absolute;
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 51, 102, 0.25);
-    filter: blur(15px);
+    width: 140px;
+    height: 140px;
+    background: rgba(255, 51, 102, 0.3);
+    filter: blur(20px);
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 1.2s;
     border-radius: 50%;
 }
 
 .particle {
     position: absolute;
     color: #ff3366;
-    font-size: 20px;
+    font-size: 24px;
     pointer-events: none;
     z-index: 6;
-    animation: explode 0.8s forwards ease-out;
+    animation: explode 0.9s forwards ease-out;
 }
+
 @keyframes explode {
     0% { transform: translate(0, 0) scale(1); opacity: 1; }
     100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
@@ -214,56 +241,64 @@ body {
 
 .photo-circle-wrap {
     position: absolute;
-    width: 0; height: 0;
+    width: 0; 
+    height: 0;
     visibility: hidden;
 }
+
 .photo-circle-wrap.show-photos {
     visibility: visible;
 }
+
 .heart-photo {
     position: absolute;
-    width: 110px; 
-    height: 110px;
+    width: 130px; 
+    height: 130px;
     object-fit: cover;
     clip-path: url(#heart-clip);
-    left: -55px; top: -55px;
+    left: -65px; 
+    top: -65px;
     opacity: 0;
     transform: translate(0, 0) scale(0);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.2);
 }
-/* REVISI MATEMATIS: 360 derajat / 5 foto = Berputar tiap kelipatan 72 derajat */
+
 .photo-circle-wrap.show-photos .heart-photo {
     opacity: 1;
-    transform: rotate(calc(var(--i) * 72deg)) translate(170px) rotate(calc(var(--i) * -72deg)) scale(1);
+    /* Rotasi 5 foto melingkar sempurna */
+    transform: rotate(calc(var(--i) * 72deg)) translate(200px) rotate(calc(var(--i) * -72deg)) scale(1);
 }
 
-
-/* --- HALAMAN 3: SPIN WHEEL --- */
+/* --- 7. HALAMAN 3: HADIAH --- */
 .spin-title {
     font-family: 'Pacifico', cursive;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 40px;
+    font-size: 3rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
 }
+
 .wheel-box {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 350px;
+    height: 350px;
 }
+
 .wheel-pointer {
     position: absolute;
-    top: -25px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2.5rem;
-    z-index: 10;
+    font-size: 3rem;
+    z-index: 15;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
+
 .wheel-canvas {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 5px solid #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    border: 8px solid #fff;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     position: relative;
     overflow: hidden;
     background: conic-gradient(
@@ -275,41 +310,60 @@ body {
         #fff0f5 257deg 308.4deg,  
         #6f4e37 308.4deg 360deg   
     );
-    transition: transform 4.5s cubic-bezier(0.25, 0.1, 0.1, 1);
+    transition: transform 5s cubic-bezier(0.15, 0, 0.15, 1);
 }
+
 .segment {
     position: absolute;
     width: 50%;
     height: 50%;
-    top: 0; left: 50%;
+    top: 0; 
+    left: 50%;
     transform-origin: 0% 100%;
     transform: rotate(calc(var(--sec) * 51.43deg));
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .segment span {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #fff;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    transform: translate(-15px, 40px) rotate(25deg);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transform: translate(-20px, 45px) rotate(25deg);
 }
+
 #spin-btn {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 70px; height: 70px;
+    width: 85px; 
+    height: 85px;
     background: #fff;
     color: #ff75a0;
     border: none;
     border-radius: 50%;
     font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 12;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    z-index: 20;
+    transition: transform 0.2s;
 }
+
 #spin-btn:active {
     transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* --- 8. MOBILE OPTIMIZATION --- */
+@media (max-width: 600px) {
+    .glass-card { padding: 30px 20px; margin: 0 10px; }
+    .romantic-title { font-size: 2rem; }
+    .letter-text { font-size: 1rem; }
+    .pop-img { width: 80px; height: 80px; }
+    .wheel-box { width: 280px; height: 280px; }
+    .heart-photo { width: 100px; height: 100px; }
 }
