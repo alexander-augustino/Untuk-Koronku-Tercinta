@@ -42,9 +42,20 @@ function explodeLove() {
 }
 
 let currentRotation = 0;
+let isSpinning = false; // Mencegah spam klik saat roda berputar
+
 function spinWheel() {
+    if (isSpinning) return; // Jika sedang berputar, tombol tidak bisa diklik lagi
+    isSpinning = true;
+
     const wheel = document.getElementById('wheel');
     const randomSpin = Math.floor(Math.random() * 360) + 1800; 
     currentRotation += randomSpin;
     wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+    // Menampilkan pesan pop-up tepat setelah roda berhenti berputar (4 detik/4000ms sesuai durasi CSS)
+    setTimeout(() => {
+        alert("🎁 YEY KAMU DAPAT HADIAH MISTERIUS! 🎁\n\nHubungi Davin segera untuk mengklaim hadiah kamu sayang! WKWKWK 🥰");
+        isSpinning = false; // Reset status agar bisa di-spin lagi jika mau
+    }, 4000);
 }
