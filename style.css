@@ -1,84 +1,114 @@
-/* ==========================================================================
-   CONFIG DASAR & NAVIGASI (TIDAK BERUBAH)
-   ========================================================================== */
 html { scroll-behavior: smooth; }
 body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; background: #000; overflow-x: hidden; }
 
 .cute-nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(8px); padding: 10px 25px; border-radius: 30px; display: flex; gap: 20px; z-index: 100; border: 1px solid rgba(255, 255, 255, 0.4); }
-.cute-nav a { color: #fff; text-decoration: none; font-weight: bold; }
+.cute-nav a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
 
-/* SECTIONS (TIDAK BERUBAH) */
-.section-page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; position: relative; }
+.section-page { height: 100vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+
 #page1 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 1.jpeg'); }
 #page2 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 2.jpeg'); }
-#page3 { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Koronku/bg 3.jpeg'); }
+#page3 { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Koronku/bg 3.jpeg'); }
 
-/* PAGE 1: TOMBOL PACIFICO & POP SLIDE (TIDAK BERUBAH) */
-#reveal-btn { background: #ff75a0; color: white; border: none; padding: 15px 35px; font-size: 1.5rem; font-family: 'Pacifico', cursive; border-radius: 50px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255,117,160,0.4); }
-.glass-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 25px; padding: 40px; max-width: 500px; text-align: center; display: none; opacity: 0; position: relative; z-index: 5; }
-.glass-card.open { display: block; opacity: 1; }
-.pop-img { position: absolute; width: 110px; height: 110px; object-fit: cover; border: 4px solid #fff; border-radius: 12px; opacity: 0; transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.1); }
+/* PAGE 1 */
+#reveal-btn { background: #ff75a0; color: white; border: none; padding: 15px 35px; font-size: 1.3rem; font-family: 'Pacifico', cursive; border-radius: 50px; cursor: pointer; transition: 0.3s; z-index: 10; }
+.glass-card { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 20px; padding: 30px; max-width: 85%; text-align: center; display: none; opacity: 0; position: relative; }
+.glass-card.open { display: block; opacity: 1; animation: fadeIn 0.8s forwards; }
+
+.pop-img { position: absolute; width: 80px; height: 80px; object-fit: cover; border: 3px solid #fff; border-radius: 10px; opacity: 0; transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.1); }
 .pop-img.show { opacity: 1; }
-.pop-left.show { transform: translate(-280px, -200px) scale(1) rotate(-10deg); }
-.pop-center.show { transform: translate(-50px, -240px) scale(1) rotate(0deg); }
-.pop-right.show { transform: translate(160px, -200px) scale(1) rotate(10deg); }
+.pop-left.show { transform: translate(-140px, -180px) scale(1) rotate(-10deg); }
+.pop-center.show { transform: translate(-40px, -210px) scale(1) rotate(0deg); }
+.pop-right.show { transform: translate(60px, -180px) scale(1) rotate(10deg); }
 
-/* PAGE 2: LEDAKAN HATI & FOTO BENTUK HATI (TIDAK BERUBAH) */
-.love-container { position: relative; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: visible; }
-.heart-shape-btn { width: 150px; height: 140px; background: #ff3366; border: none; color: white; font-family: 'Pacifico', cursive; font-size: 1.3rem; clip-path: url(#heart-clip); z-index: 20; cursor: pointer; transition: 0.4s; }
-.message-center { position: absolute; text-align: center; width: 340px; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; transition: 1s; z-index: 5; pointer-events: none; }
+/* PAGE 2 - Penyesuaian agar tidak terpotong */
+.love-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+
+.heart-shape-btn { width: 120px; height: 110px; background: #ff3366; border: none; color: white; font-family: 'Pacifico', cursive; font-size: 1.1rem; cursor: pointer; clip-path: url(#heart-clip); z-index: 20; transition: 0.4s; }
+
+.message-center { position: absolute; text-align: center; width: 280px; z-index: 5; opacity: 0; transition: 1s; pointer-events: none; }
 .message-center.show-msg { opacity: 1; }
-.msg-title { font-family: 'Pacifico', cursive; color: #ffcbdc; font-size: 2.3rem; margin: 0; }
-.heart-photo { position: absolute; width: 190px; height: 190px; object-fit: cover; clip-path: url(#heart-clip); border: 3px solid #fff; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; transition: 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
+.msg-title { font-family: 'Pacifico', cursive; color: #ffcbdc; font-size: 2rem; margin: 0; }
+.msg-subtitle { font-size: 0.9rem; margin: 10px 0; line-height: 1.4; }
+
+/* Formasi Foto (Disesuaikan skalanya agar masuk frame 100vh) */
+.heart-photo { position: absolute; width: 140px; height: 140px; object-fit: cover; clip-path: url(#heart-clip); left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; transition: 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .show-form .heart-photo { opacity: 1; }
-.show-form .pos-top-left { transform: translate(-300px, -210px) scale(1); }
-.show-form .pos-top-right { transform: translate(110px, -210px) scale(1); }
-.show-form .pos-mid-left { transform: translate(-380px, 20px) scale(1); }
-.show-form .pos-mid-right { transform: translate(190px, 20px) scale(1); }
-.show-form .pos-bottom { transform: translate(-95px, 240px) scale(1); }
+.show-form .pos-top-left { transform: translate(-150px, -200px) scale(1); }
+.show-form .pos-top-right { transform: translate(10px, -200px) scale(1); }
+.show-form .pos-mid-left { transform: translate(-220px, -40px) scale(1); }
+.show-form .pos-mid-right { transform: translate(80px, -40px) scale(1); }
+.show-form .pos-bottom { transform: translate(-70px, 120px) scale(1); }
 
-/* PAGE 3: SPIN WHEEL (TIDAK BERUBAH) */
-.wheel-box { position: relative; width: 350px; height: 350px; display: flex; justify-content: center; align-items: center; }
-.wheel-pointer { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); font-size: 2.5rem; z-index: 20; }
-.wheel-canvas { width: 350px; height: 350px; border-radius: 50%; border: 6px solid #fff; position: relative; overflow: hidden; box-sizing: border-box; background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); transition: transform 4.5s cubic-bezier(0.15, 0, 0.15, 1); transform-origin: center center; }
-.segment { position: absolute; width: 50%; height: 50%; top: 0; left: 50%; transform-origin: 0% 100%; transform: rotate(calc(var(--sec) * 51.43deg)); }
-#spin-btn { position: absolute; width: 75px; height: 75px; border-radius: 50%; border: none; background: #fff; color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 30; }
+/* PAGE 3: PERBAIKAN POROS DAN POINTER RODA PUTAR */
+.spin-title { 
+    font-family: 'Pacifico', cursive; 
+    font-size: 2rem; 
+    margin-bottom: 20px; 
+    text-align: center; 
+}
 
-.particle { position: absolute; left: 50%; top: 50%; animation: explode 1s forwards; }
+.wheel-box { 
+    position: relative; 
+    width: 300px; 
+    height: 300px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wheel-canvas { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%; 
+    border: 5px solid #fff; 
+    position: relative; 
+    overflow: hidden; 
+    box-sizing: border-box; 
+    background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); 
+    transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); 
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 40;
+}
+
+#spin-btn { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 65px; 
+    height: 65px; 
+    border-radius: 50%; 
+    border: none; 
+    background: #fff; 
+    color: #ff75a0; 
+    font-weight: bold; 
+    cursor: pointer; 
+    z-index: 30; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    margin: 0;
+    padding: 0;
+}
+
+.particle { position: absolute; animation: explode 1s forwards; pointer-events: none; }
 @keyframes explode { 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 
 /* ==========================================================================
-   REVISI: KALIBRASI RESPONSIVE (UNTUK LAPTOP LEBIH LEGA)
+   KHUSUS TAMPILAN LAPTOP / LAYAR LEBAR (>= 1024px)
+   Halaman dibuat lebih tinggi agar bisa di-scroll lebih jauh ke bawah
    ========================================================================== */
-
-/* --- TAMPILAN LAPTOP / TABLET BESAR (>= 768px) --- */
-@media (min-height: 600px) and (min-width: 768px) {
+@media (min-width: 1024px) {
     .section-page {
-        height: 200vh; /* TINGGI DINAIKKAN: Scroll jadi lebih jauh */
-        justify-content: flex-start; /* Memulai elemen dari atas agar tidak mengambang di tengah */
-        padding-top: 15vh; /* Ruang napas dari Nav */
-        background-attachment: fixed; /* EFEK PARALLAX: Background diam, elemen bergerak saat di-scroll (Foto jadi lebih 'terasa') */
+        height: 180vh; /* Memperlebar halaman ke bawah khusus di laptop */
+        overflow: visible;
     }
-
-    /* Penyesuaian posisi elemen di laptop agar pas dengan 200vh */
-    #page1 .glass-card { margin-top: 15vh; }
-    #page2 .love-container { 
-        height: 100vh; /* Mengunci formsai foto tetap di satu layar penuh di dalam 200vh section */
-        margin-top: 20vh;
-    }
-    #page3 .spin-title { margin-top: 15vh; }
-}
-
-/* --- TAMPILAN HP KECIL (Dibawah 768px atau layar pendek) --- */
-@media (max-width: 767px) {
-    .section-page {
-        height: 100vh; /* TETAP DI 100VH: Supaya di HPformsai tidak rusak */
-        justify-content: center;
-        background-attachment: scroll; /* Background ikut bergerak di HP biar ringan */
-    }
-    /* Koordinat pop-img di HP dipersempit sedikit agar pas */
-    .pop-left.show { transform: translate(-180px, -180px) scale(0.9) rotate(-10deg); }
-    .pop-center.show { transform: translate(-50px, -220px) scale(1) rotate(0deg); }
-    .pop-right.show { transform: translate(70px, -180px) scale(0.9) rotate(10deg); }
 }
