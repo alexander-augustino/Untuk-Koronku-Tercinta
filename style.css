@@ -40,12 +40,65 @@ body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; b
 .show-form .pos-mid-right { transform: translate(80px, -40px) scale(1); }
 .show-form .pos-bottom { transform: translate(-70px, 120px) scale(1); }
 
-/* PAGE 3 */
-.spin-title { font-family: 'Pacifico', cursive; font-size: 2rem; margin-bottom: 20px; text-align: center; }
-.wheel-box { position: relative; width: 300px; height: 300px; }
-.wheel-canvas { width: 100%; height: 100%; border-radius: 50%; border: 5px solid #fff; position: relative; overflow: hidden; background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); }
-#spin-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; color: #ff75a0; font-weight: bold; cursor: pointer; z-index: 30; }
+/* ==========================================================================
+   PAGE 3: PERBAIKAN POROS DAN POINTER RODA PUTAR (MOBILE RESPONSIVE FIX)
+   ========================================================================== */
+.spin-title { 
+    font-family: 'Pacifico', cursive; 
+    font-size: 2rem; 
+    margin-bottom: 20px; 
+    text-align: center; 
+}
 
-.particle { position: absolute; animation: explode 1s forwards; pointer-events: none; }
-@keyframes explode { 100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* Memastikan box wadah berbentuk kotak sempurna agar koordinat tengahnya presisi */
+.wheel-box { 
+    position: relative; 
+    width: 300px; 
+    height: 300px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wheel-canvas { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%; 
+    border: 5px solid #fff; 
+    position: relative; 
+    overflow: hidden; 
+    box-sizing: border-box; 
+    background: conic-gradient(#ffb6c1 0 51.4deg, #8b5a2b 51.4deg 102.8deg, #d2b48c 102.8deg 154.2deg, #ffcbdc 154.2deg 205.6deg, #cd853f 205.6deg 257deg, #fff0f5 257deg 308.4deg, #6f4e37 308.4deg 360deg); 
+    transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); 
+}
+
+/* PERBAIKAN POINTER JARI: Diposisikan mutlak di atas tengah roda */
+.wheel-pointer {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 40;
+}
+
+/* PERBAIKAN POROS TOMBOL SPIN: Dikunci mutlak tepat di titik sumbu (0,0) tengah roda */
+#spin-btn { 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 65px; 
+    height: 65px; 
+    border-radius: 50%; 
+    border: none; 
+    background: #fff; 
+    color: #ff75a0; 
+    font-weight: bold; 
+    cursor: pointer; 
+    z-index: 30; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    /* Menghilangkan sisa margin bawaan peramban */
+    margin: 0;
+    padding: 0;
+}
