@@ -123,13 +123,14 @@ body { margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; color: #fff; b
         opacity: 0;
     }
 }
-}
 .plain-emoji {
     background: none !important;
     -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: initial !important;
+    -webkit-text-fill-color: #fff !important; /* Memaksa browser mengembalikan layer warna asli emoji */
+    color: #fff !important;
     animation: none !important;
     display: inline-block;
+    text-shadow: none !important; /* Menghilangkan sisa kilau bayangan */
 }
 /* ==========================================================================
    CONFIG MULTI PLATFORM RESPONSIVE (LAPTOP LEBIH TINGGI)
