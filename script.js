@@ -1,5 +1,5 @@
 /* ==========================================================================
-   FUNGSI SCRIPT.JS (REVISI FINAL: ALERT HADIAH ASLI)
+   FUNGSI SCRIPT.JS (REVISI FINAL: ANIMASI MULTI-STAGE SPIN & PEAK GLOW)
    ========================================================================== */
 
 function openLetter() {
@@ -22,7 +22,6 @@ function explodeLove() {
     const midMsg = document.getElementById('mid-message');
     const container = document.querySelector('.love-container');
 
-    // Ledakan partikel hati
     for (let i = 0; i < 40; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -45,23 +44,54 @@ function explodeLove() {
 }
 
 let currentRotation = 0;
-let isSpinning = false; // Mencegah spam klik saat roda berputar
+let isSpinning = false;
 
 function spinWheel() {
-    if (isSpinning) return; // Jika sedang berputar, tombol tidak bisa diklik lagi
+    if (isSpinning) return; 
     isSpinning = true;
 
     const wheel = document.getElementById('wheel');
-    const randomSpin = Math.floor(Math.random() * 360) + 1800; // Minimal 5 putaran penuh
+    const wheelBox = document.getElementById('wheel-container');
+    
+    // FASE 1: Lepas dari background & beri cahaya dasar
+    wheelBox.classList.add('wheel-pop');
+
+    const randomSpin = Math.floor(Math.random() * 360) + 1800; 
     currentRotation += randomSpin;
     
-    // Mulai animasi putar
+    // Mulai putaran roda
     wheel.style.transform = `rotate(${currentRotation}deg)`;
 
-    // MENAMPILKAN ALERT HADIAH ASLI DAVIN TEPAT SAAT RODA BERHENTI (4.5 detik)
+    // FASE 2 KE 3: Detik ke-4 (Roda melambat -> Kilau Maksimal & Ledakan Pelangi)
     setTimeout(() => {
-        // Teks pesan asli yang kamu minta
+        wheelBox.classList.add('glow-peak');
+        explodeGifts(wheelBox);
+    }, 4000);
+
+    // FASE RESOLUSI: Detik ke-4.5 (Kembali tertanam -> Muncul Alert)
+    setTimeout(() => {
+        wheelBox.classList.remove('wheel-pop', 'glow-peak');
+        
+        // Memunculkan alert hadiah asli tepat setelah roda kembali tenang
         alert("🎁 YEY KAMU DAPAT HADIAH MISTERIUS! 🎁\n\nHubungi Davin segera untuk mengklaim hadiah kamu sayang! WKWKWK 🥰");
-        isSpinning = false; // Reset status agar bisa di-spin lagi
-    }, 4500); // 4500ms = 4.5 detik sesuai durasi transisi di CSS
+        isSpinning = false; 
+    }, 4500); 
+}
+
+// Fungsi pembantu untuk membuat ledakan kado dengan efek trail pelangi pelan
+function explodeGifts(parentContainer) {
+    for (let i = 0; i < 15; i++) {
+        const gift = document.createElement('div');
+        gift.className = 'gift-particle';
+        gift.innerHTML = '🎁';
+        
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 100 + Math.random() * 120;
+        
+        gift.style.setProperty('--gtx', `${Math.cos(angle) * distance}px`);
+        gift.style.setProperty('--gty', `${Math.sin(angle) * distance}px`);
+        
+        parentContainer.appendChild(gift);
+        setTimeout(() => gift.remove(), 1200);
+    }
 }
